@@ -26,6 +26,34 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 ```
 
+```toml
+[project]
+name = "sfml_armadillo_example"
+
+[vcpkg]
+version = "2021.05.12"
+packages = [
+    "sfml",
+    "armadillo",
+]
+
+[find-package]
+Armadillo = {}
+SFML = { components = ["system", "window", "graphics"] }
+
+[target.example]
+type = "executable"
+sources = [
+    "src/main.cpp",
+]
+link-libraries = [
+    "sfml-system",
+    "sfml-graphics",
+    "sfml-window",
+    "${ARMADILLO_LIBRARIES}",
+]
+```
+
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
 ### Jekyll Themes
